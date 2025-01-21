@@ -1,11 +1,12 @@
 nav{
-    padding: 5px 2%;
+    padding: 10px 2%;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     position: sticky;
     top: 0;
     z-index: 10;
+    height: 55px;
 }
 
 
