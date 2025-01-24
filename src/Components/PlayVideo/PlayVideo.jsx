@@ -16,6 +16,7 @@ const PlayVideo = ({videoId}) => {
 
   const [apiData, setApiData] = useState(null);
   const [channelData,setChannelData] = useState(null);
+  const [commentData,setCommentData] = useState([]);
 
   const fetchVideoData = async () =>{
     const videoDatails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
@@ -28,7 +29,15 @@ const PlayVideo = ({videoId}) => {
     //channel data
     const channelData_url = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${apiData.snippet.channelId}&key=${API_KEY}`
     await fetch(channelData_url).then(res=>res.json()).then(data=>setChannelData(data.items[0]))
+
+    //comment data
+    const comment_url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`
+    await fetch(comment_url).then(res=>res.json()).then(data=>setCommentData(data.items))
+
   }
+
+  
+
 
   useEffect(()=>{
     fetchVideoData();
@@ -65,90 +74,23 @@ const PlayVideo = ({videoId}) => {
          <p>{apiData?apiData.snippet.description.slice(0,250):"Description here"}</p>
           <hr />
           <h4>{apiData?apiData.statistics.commentCount:102} Comments</h4>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
+          {commentData.map((item, index)=>{
+            return(
+              <div key={index} className="comment">
+              <img src={item.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="" />
+              <div>
+                <h3>{item.snippet.topLevelComment.snippet.authorDisplayName} <span>2 day ago</span></h3>
+                <p>{item.snippet.topLevelComment.snippet.textDisplay} </p>
+                 <div className="comment-action">
+                  <img src={like} alt="" />
+                  <span>{value_converter(item.snippet.topLevelComment.snippet.likeCount)} </span>
+                  <img src={dislike} alt="" />
+                 </div>
+              </div>
             </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
-          <div className="comment">
-            <img src={user_profile} alt="" />
-            <div>
-              <h3>Akila Lochana <span>2 day ago</span></h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, soluta praesentium a voluptatibus ullam eius quas nihil porro debitis in quam veniam tenetur ipsam laboriosam, aliquid placeat cumque exercitationem. Distinctio!</p>
-               <div className="comment-action">
-                <img src={like} alt="" />
-                <span>244</span>
-                <img src={dislike} alt="" />
-               </div>
-            </div>
-          </div>
+            )
+          })}
+          
           
         </div>
     </div>
