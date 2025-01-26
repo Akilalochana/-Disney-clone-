@@ -17,19 +17,19 @@ A responsive YouTube clone application built with React, showcasing features suc
 
 ## Folder Structure
 src
-├── assets           # Images and static assets
-├── Components       # React components
-│   ├── Feed         # Video feed components
-│   ├── Navbar       # Top navigation bar components
-│   ├── PlayVideo    # Video player components
-│   ├── Recommended  # Recommended video components
-│   └── Sidebar      # Sidebar components
-├── Pages            # Main pages of the app
-│   ├── Home         # Home page
-│   └── Video        # Video details page
-├── App.css          # Global styles
-├── App.jsx          # Main app component
-└── index.js         # Entry point
+├── assets           
+├── Components        
+│   ├── Feed         
+│   ├── Navbar        
+│   ├── PlayVideo     
+│   ├── Recommended  
+│   └── Sidebar     
+├── Pages            
+│   ├── Home         
+│   └── Video       
+├── App.css          
+├── App.jsx           
+└── index.js         
 
 ## Screenshots
 ![alt text]({02F3BA5B-6D94-41DD-AFC7-E22820290F44}.png)
