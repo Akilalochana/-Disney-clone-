@@ -44,9 +44,11 @@ nav{
 }
 
 .nav-right .user-icon{
-    width: 35px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
+
 
 @media(max-width:900px){
     .menu-icon{

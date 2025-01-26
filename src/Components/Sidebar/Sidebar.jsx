@@ -54,7 +54,7 @@ const Sidebar = ({sidebar,category,setCategory}) => {
         <div className="subscribe-list">
             <h3>Subscribed</h3>
             <div className='side-links'>
-                <img src={jack} alt="" /><p>pewDiepie</p>
+                <img src={jack} alt="" /><p>craft with Sasnara</p>
             </div>
             <div className='side-links'>
                 <img src={simon} alt="" /><p>pewDiepie</p>
